@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-brand: 2 132 199;
+  }
+  
+  body {
+    background-color: #f8fafc;
+    color: #0f172a;
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Kids Card 3D Effect */
+.card-kids {
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-kids:hover {
+  transform: translateY(-4px) scale(1.01);
+}
+
+.btn-kids-yellow {
+  background-color: #FFD166;
+  color: #1E293B;
+  box-shadow: 0 4px 0 #E0A92C;
+  transition: all 0.15s ease;
+}
+.btn-kids-yellow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #E0A92C;
+}
+.btn-kids-yellow:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #E0A92C;
+}
+
+.btn-kids-purple {
+  background-color: #A06CD5;
+  color: #FFFFFF;
+  box-shadow: 0 4px 0 #7A47B0;
+  transition: all 0.15s ease;
+}
+.btn-kids-purple:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #7A47B0;
+}
+.btn-kids-purple:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #7A47B0;
+}
+
+.btn-kids-teal {
+  background-color: #4ECDC4;
+  color: #0F172A;
+  box-shadow: 0 4px 0 #2BA59D;
+  transition: all 0.15s ease;
+}
+.btn-kids-teal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #2BA59D;
+}
+.btn-kids-teal:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #2BA59D;
+}
+
+/* Game Animations */
+@keyframes star-pop {
+  0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+  70% { transform: scale(1.2) rotate(10deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.animate-star-pop {
+  animation: star-pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
