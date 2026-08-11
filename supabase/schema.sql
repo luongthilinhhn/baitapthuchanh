@@ -416,7 +416,7 @@ CREATE POLICY "Authenticated users insert system logs"
     ON public.system_logs FOR INSERT TO authenticated WITH CHECK (true);
 
 -- ====================================================================
--- INSTRUCTIONS FOR STORAGE BUCKET setup IN SUPABASE DASHBOARD:
+-- INSTRUCTIONS FOR STORAGE BUCKET SETUP IN SUPABASE DASHBOARD:
 -- 1. Vào Storage -> Create New Bucket: name = "materials"
 -- 2. Đặt Public = ON (cho phép xem file học liệu public)
 -- ====================================================================

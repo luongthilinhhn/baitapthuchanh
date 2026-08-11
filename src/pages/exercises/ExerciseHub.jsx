@@ -33,8 +33,27 @@ export const ExerciseHub = () => {
 
   const filtered = exercises.filter((ex) => ex.category === activeCategory);
 
-  const handleExerciseCompleted = (result) => {
-    setCompletedList((prev) => [...prev, activeExercise.id]);
+  const handleExerciseCompleted = async (result) => {
+    if (activeExercise?.id) {
+      setCompletedList((prev) => [...prev, activeExercise.id]);
+    }
+    if (isSupabaseConfigured && supabase && profile?.id && activeExercise?.id && !activeExercise.id.startsWith('ex_')) {
+      try {
+        await supabase.from('exercise_submissions').insert([
+          {
+            exercise_id: activeExercise.id,
+            student_id: profile.id,
+            score: result?.score || 100,
+            max_score: 100,
+            stars: result?.stars || (result?.score >= 80 ? 3 : result?.score >= 50 ? 2 : 1),
+            answers: result || {},
+            completed_at: new Date().toISOString()
+          }
+        ]);
+      } catch (err) {
+        console.error('Failed to record exercise submission:', err);
+      }
+    }
   };
 
   return (
