@@ -116,7 +116,12 @@ export const AuthProvider = ({ children }) => {
         password
       });
 
-      if (error) throw error;
+      if (error) {
+        if (error.message?.toLowerCase().includes('email not confirmed')) {
+          throw new Error('Tài khoản Email chưa được kích hoạt trong Supabase. Bạn hãy vào Supabase Dashboard -> Authentication -> Providers -> Email -> Tắt "Confirm email", hoặc chọn "Confirm email" trong tab Users!');
+        }
+        throw error;
+      }
       if (data?.user) {
         await fetchProfile(data.user.id);
         await logSystemAction(data.user.id, 'LOGIN', { email });
